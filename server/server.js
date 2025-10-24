@@ -1,4 +1,4 @@
-// File: server/server.js (MODIFIED)
+// File: server/server.js 
 
 const express = require('express');
 const cors = require('cors');
@@ -10,19 +10,23 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 const commentRoutes = require('./routes/commentRoutes');
 
-// Load environment variables from .env file
 dotenv.config();
-
-// Connect to Database
 connectDB();
-
 const app = express();
 
-// Init Middleware
-app.use(cors());
+// We get the live frontend URL from our environment variables
+const clientURL = process.env.CLIENT_URL;
+
+const corsOptions = {
+  // Only allow requests from our live Netlify app
+  origin: clientURL || "http://localhost:5173", // Fallback for local dev
+};
+
+app.use(cors(corsOptions));
+// --- END CORS CONFIG ---
+
 app.use(express.json());
 
-// A simple test route
 app.get('/', (req, res) => {
   res.send('API Running...');
 });
@@ -32,6 +36,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 
+// ... (Error Handlers) ...
 // --- Simple Error Handling 
 // 404 Not Found Middleware
 app.use((req, res, next) => {
@@ -44,7 +49,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Server Error' });
 });
 
-const PORT = process.env.PORT || 8000; 
+// Render provides its own port via process.env.PORT.
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
