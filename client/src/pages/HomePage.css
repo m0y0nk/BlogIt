@@ -1,0 +1,122 @@
+/* File: client/src/pages/HomePage.css */
+.home-page h1 {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* On wider screens, go to 2 columns */
+@media (min-width: 768px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+.post-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-card-title a {
+  color: var(--dark-color);
+}
+.post-card-title a:hover {
+  color: var(--primary-color);
+}
+
+.post-card-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.post-card-excerpt {
+  margin-bottom: 1rem;
+}
+
+.post-card-readmore {
+  font-weight: bold;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.search-form {
+  display: flex;
+  flex-grow: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+
+.search-btn {
+  border-radius: 0 5px 5px 0;
+}
+
+.tag-filter {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  flex-basis: 200px;
+  flex-grow: 1;
+}
+
+.post-card-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-card-readmore {
+  font-weight: bold;
+}
+
+.post-card-comment {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+  background: #f0f0f0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.post-card-comment:hover {
+  background: #e0e0e0;
+  color: var(--dark-color);
+}

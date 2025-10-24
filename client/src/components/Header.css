@@ -1,0 +1,74 @@
+/* File: client/src/components/Header.css */
+
+.header {
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-brand a {
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a,
+.nav-user span {
+  text-decoration: none;
+  color: var(--dark-color);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.nav-create-btn {
+  background-color: var(--primary-color);
+  color: #fff !important; /* Override other link styles */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.nav-create-btn:hover {
+  background-color: #2980b9;
+  color: #fff !important;
+}
+
+.nav-logout-btn {
+  background: none;
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.nav-logout-btn:hover {
+  background: var(--danger-color);
+  color: #fff;
+}

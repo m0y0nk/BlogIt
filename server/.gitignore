@@ -1,0 +1,21 @@
+# Node.js dependencies
+# Never commit your installed packages!
+/node_modules
+
+# Environment variables
+# Contains secret keys, database credentials, etc.
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE & editor configurations
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

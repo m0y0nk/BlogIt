@@ -1,0 +1,30 @@
+# Node.js dependencies
+# Never commit your installed packages!
+/node_modules
+
+# Environment variables
+# Contains secret keys and API credentials.
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Build output folder
+# This is the generated code for production.
+/dist
+/build
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE & editor configurations
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

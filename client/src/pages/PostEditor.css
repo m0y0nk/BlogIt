@@ -1,0 +1,49 @@
+/* File: client/src/pages/PostEditor.css */
+.editor-container {
+  max-width: 768px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.editor-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.editor-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.editor-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.editor-form input,
+.editor-form textarea,
+.editor-form select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editor-form textarea {
+  min-height: 200px;
+  line-height: 1.5;
+}
+
+.editor-error {
+  color: var(--danger-color);
+  background: #fdd;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
