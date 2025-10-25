@@ -7,8 +7,7 @@
 ## ✨ Live Demo
 
 - **Frontend (Netlify):** [https://blogthat.netlify.app/](https://blogthat.netlify.app/)  
-- **Backend (Render):** [https://my-blog-backend-td3b.onrender.com/](https://my-blog-backend-td3b.onrender.com/)  
-> *(Note: Replace with your actual deployed URLs)*
+- **Backend (Render):** [https://my-blog-backend-td3b.onrender.com/](https://my-blog-backend-td3b.onrender.com/)
 
 ---
 
