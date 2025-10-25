@@ -39,10 +39,9 @@ const SinglePostPage = () => {
     fetchPostAndComments();
   }, [id]); // Re-run effect if the 'id' param changes
 
-  // (Step 15c) Handle new comment submission
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    if (!newComment.trim()) return; // Don't submit empty comments
+    if (!newComment.trim()) return;
 
     try {
       const res = await api.post('/comments', {
@@ -50,8 +49,11 @@ const SinglePostPage = () => {
         postId: id,
       });
 
-      // (UX Flow) Add new comment to state to display immediately
-      setComments([...comments, res.data]);
+      // --- MODIFICATION ---
+      // Add new comment to the START of the array
+      setComments([res.data, ...comments]);
+      // --- END MODIFICATION ---
+
       setNewComment(''); // Clear the textarea
     } catch (err) {
       console.error('Failed to post comment:', err);
@@ -106,7 +108,6 @@ const SinglePostPage = () => {
           </p>
         )}
 
-        {/* (Step 15b) Display Comments */}
         <div className="comments-list">
           {comments.length > 0 ? (
             comments.map((comment) => (

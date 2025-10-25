@@ -42,7 +42,9 @@ const getCommentsForPost = async (req, res) => {
   try {
     const comments = await Comment.find({ post: req.params.postId })
       .populate('author', 'username') // Only get username
-      .sort({ createdAt: 'asc' }); // Show oldest first
+      // --- MODIFICATION ---
+      .sort({ createdAt: 'desc' }); // Change 'asc' to 'desc'
+      // --- END MODIFICATION ---
 
     res.status(200).json(comments);
   } catch (error)
