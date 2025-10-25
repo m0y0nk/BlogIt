@@ -112,22 +112,20 @@ const HomePage = () => {
                 By {post.author.username} on{' '}
                 {new Date(post.createdAt).toLocaleDateString()}
               </p>
+
               <p className="post-card-excerpt">
                 {post.content.substring(0, 100)}...
               </p>
-
-              {/* --- THIS IS THE MODIFIED BLOCK --- */}
+              
               <div className="post-card-links">
-                <Link to={`/posts/${post._id}`} className="post-card-readmore">
-                  Read More &rarr;
-                </Link>
-                {/* This link includes the hash #comments */}
-                <Link to={`/posts/${post._id}#comments`} className="post-card-comment">
-                  Comment
-                </Link>
+                {/* ... (links) ... */}
               </div>
-              {/* --- END MODIFICATION --- */}
 
+              <div className="post-card-stats">
+                <span>👁️ {post.views} Views</span>
+                <span>💬 {post.commentCount} Comments</span>
+              </div>
+              
             </article>
           ))}
         </div>

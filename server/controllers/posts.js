@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 // @desc    Create a new post
 // @route   POST /api/posts
@@ -77,9 +78,25 @@ const getPost = async (req, res) => {
       'author',
       'username'
     );
+
     if (!post) {
       return res.status(404).json({ message: 'Post not found' });
     }
+
+    // --- INCREMENT VIEW COUNT ---
+    post.views = post.views + 1;
+    
+    // Get the *actual* number of comments
+    const actualCommentCount = await Comment.countDocuments({ post: post._id });
+
+    // If the saved count is wrong, correct it
+    if (post.commentCount !== actualCommentCount) {
+      post.commentCount = actualCommentCount;
+    }
+    
+    // Save all changes (views and corrected count)
+    await post.save();
+
     res.status(200).json(post);
   } catch (error) {
     console.error(error);
@@ -90,7 +107,6 @@ const getPost = async (req, res) => {
   }
 };
 
-// --- (Step 2) NEW FUNCTION ---
 // @desc    Get all posts by the logged-in user
 // @route   GET /api/posts/myposts
 // @access  Private

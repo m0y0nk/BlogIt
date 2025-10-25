@@ -28,6 +28,14 @@ const PostSchema = new mongoose.Schema(
       enum: ['draft', 'published'],
       default: 'draft',
     },
+    views: {
+      type: Number,
+      default: 0,
+    },
+    commentCount: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

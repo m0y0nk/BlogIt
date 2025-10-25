@@ -49,10 +49,14 @@ const SinglePostPage = () => {
         postId: id,
       });
 
-      // --- MODIFICATION ---
       // Add new comment to the START of the array
       setComments([res.data, ...comments]);
-      // --- END MODIFICATION ---
+      
+      // Manually increment the post's commentCount in the state
+      setPost({
+        ...post,
+        commentCount: post.commentCount + 1
+      });
 
       setNewComment(''); // Clear the textarea
     } catch (err) {
@@ -67,11 +71,16 @@ const SinglePostPage = () => {
 
   return (
     <div className="single-post-container">
-      {/* --- POST CONTENT --- */}
       <h1 className="post-title">{post.title}</h1>
       <div className="post-meta">
         Posted by <strong>{post.author.username}</strong> on{' '}
         {new Date(post.createdAt).toLocaleDateString()}
+        
+        {/* --- STATS BLOCK --- */}
+        <div className="post-stats">
+          <span>👁️ {post.views} Views</span>
+          <span>💬 {post.commentCount} Comments</span>
+        </div>
       </div>
 
       {post.tags.length > 0 && (
@@ -90,7 +99,6 @@ const SinglePostPage = () => {
       <div className="comments-section" id="comments"> {/* <-- THIS IS THE ID YOU WERE ADDING */}
         <h2>Comments ({comments.length})</h2>
         
-        {/* (Step 15c) Comment Form */}
         {user ? (
           <form onSubmit={handleCommentSubmit} className="comment-form">
             <textarea

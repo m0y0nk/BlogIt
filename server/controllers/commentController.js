@@ -25,6 +25,10 @@ const createComment = async (req, res) => {
 
     await newComment.save();
     
+    // --- Increment Comment Count ---
+    post.commentCount = post.commentCount + 1;
+    await post.save();
+
     // Populate author info before sending back to frontend
     newComment = await newComment.populate('author', 'username');
 
@@ -42,9 +46,7 @@ const getCommentsForPost = async (req, res) => {
   try {
     const comments = await Comment.find({ post: req.params.postId })
       .populate('author', 'username') // Only get username
-      // --- MODIFICATION ---
       .sort({ createdAt: 'desc' }); // Change 'asc' to 'desc'
-      // --- END MODIFICATION ---
 
     res.status(200).json(comments);
   } catch (error)
